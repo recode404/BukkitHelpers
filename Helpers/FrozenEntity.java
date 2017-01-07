@@ -13,7 +13,8 @@ public class FrozenEntity {
 	private EntityLiving living;
 	
 	//Create a frozen entity with an NMS entity. Use this code template to create entities:
-	// FrozenEntity frozen = new FrozenEntity(new EntityZombie((CraftWorld)Bukkit.getWorld("world")).getHandle());
+	//FrozenEntity frozen = new FrozenEntity(new EntityZombie(((CraftWorld)Bukkit.getWorld("world")).getHandle()));
+	
 	public FrozenEntity(EntityLiving living) {
 		this.living = living;
 	}
@@ -25,7 +26,6 @@ public class FrozenEntity {
 		living.setPositionRotation(loc.getX(), loc.getY(), loc.getZ(), loc.getYaw(), loc.getPitch());
 		living.getWorld().addEntity(living, CreatureSpawnEvent.SpawnReason.CUSTOM);
 		((LivingEntity)living.getBukkitEntity()).setAI(false);
-		
 		return living.getBukkitEntity();
 	}
 	
