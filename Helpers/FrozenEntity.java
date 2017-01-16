@@ -12,8 +12,9 @@ public class FrozenEntity {
 	
 	private EntityLiving living;
 	
-	//Create a frozen entity with an NMS entity. Use this code template to create entities:
-	//FrozenEntity frozen = new FrozenEntity(new EntityZombie(((CraftWorld)Bukkit.getWorld("world")).getHandle()));
+	/*Create a frozen entity with an NMS entity. Use this code template to create entities:
+	FrozenEntity frozen = new FrozenEntity(new EntityZombie(((CraftWorld)Bukkit.getWorld("world")).getHandle()));
+	*/
 	
 	public FrozenEntity(EntityLiving living) {
 		this.living = living;
@@ -21,8 +22,12 @@ public class FrozenEntity {
 	
 	//spawn in the frozen entity at the given location
 	public Entity spawn(Location loc) {
+		/* whenever someone at Mojang signs up Codecadamy or a weekend workshop to learn 
+		   programming basics we wont need these two lines
+		*/
 		living.h(loc.getYaw());
 		living.i(loc.getYaw());
+		
 		living.setPositionRotation(loc.getX(), loc.getY(), loc.getZ(), loc.getYaw(), loc.getPitch());
 		living.getWorld().addEntity(living, CreatureSpawnEvent.SpawnReason.CUSTOM);
 		((LivingEntity)living.getBukkitEntity()).setAI(false);
