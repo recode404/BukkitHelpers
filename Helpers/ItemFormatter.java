@@ -5,8 +5,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
 /**
- * Class for teaching how to format Item Stacks.
- * Also can be used as a helper class when formatting Item Stacks.
+ * Formats ItemStacks with custom names and lores.
+ * Formats Skulls with custom names and owners.
  */
 public class ItemFormatter {
 	
@@ -42,6 +42,7 @@ public class ItemFormatter {
 		
 		SkullMeta skullMeta = (SkullMeta)item.getItemMeta();
 		skullMeta.setOwner(owner);
+		skullMeta.setDisplayName(owner+"'s Head");
 		item.setItemMeta(skullMeta);
 		return item;
 	}
