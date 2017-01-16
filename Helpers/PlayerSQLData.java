@@ -2,12 +2,13 @@ import java.sql.*;
 import java.util.UUID;
 
 /**
- * Created by taylor on 1/15/17.
  * Example of storing Player Data in a MySQL Database.
  */
 public class PlayerSQLData {
 	
 	private static Connection connection;
+	
+	//REPLACE VALUES WITH YOUR SQL SERVER'S INFORMATION
 	private final static String host = "HOST",
 			database = "DATABASE", username = "USERNAME", password = "PASSWORD";
 	
@@ -18,6 +19,7 @@ public class PlayerSQLData {
 		checkForPlayer();
 	}
 	
+	//checks if player exists, if not intializes player
 	private synchronized void checkForPlayer() {
 		try {
 			PreparedStatement statement = connection.prepareStatement
@@ -35,6 +37,7 @@ public class PlayerSQLData {
 		}
 	}
 	
+	//adds player to sql database
 	private synchronized void initializePlayer() {
 		try {
 			PreparedStatement statement = connection.prepareStatement
@@ -48,6 +51,7 @@ public class PlayerSQLData {
 		}
 	}
 	
+	//retrives the player's rank as an integer from the database
 	public synchronized int getRank() {
 		try {
 			PreparedStatement statement = connection.prepareStatement
@@ -67,6 +71,7 @@ public class PlayerSQLData {
 		return 0;
 	}
 	
+	//sets the players rank in the database
 	public synchronized void setRank(int rank) {
 		try {
 			PreparedStatement statement = connection.prepareStatement
@@ -82,6 +87,7 @@ public class PlayerSQLData {
 		
 	}
 	
+	//establishes connection with the SQL server. this should be executed in your onEnable only
 	public static synchronized void openConnection() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -95,6 +101,7 @@ public class PlayerSQLData {
 		}
 	}
 	
+	//closes the connection to the SQL server. this should be executed in your onDisable only
 	public static synchronized void closeConnection() {
 		if(connection != null)
 			try {
